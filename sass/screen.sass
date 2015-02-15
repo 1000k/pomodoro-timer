@@ -6,13 +6,14 @@
 
 @import compass/reset
 @import compass/css3
+@import compass/css3/transform
 @import palette
 
 $pt-default-primary-color: Indigo
 $pt-default-font-weight: 300
 $pt-default-font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif
 
-$pt-mode-font-size: 3rem
+$pt-mode-font-size: 4rem
 
 $pt-btn-font-size: 1.5rem
 $pt-btn-font-color: white
@@ -24,6 +25,16 @@ body
   font-weight: $pt-default-font-weight
   font-family: $pt-default-font-family
   line-height: $pt-mode-font-size
+
+.container
+  position: absolute
+  +transform(translateX(-50%))
+  left: 50%
+
+.indicators
+  text-align: center
+  margin: $pt-mode-font-size 0
+  line-height: $pt-mode-font-size * 2
 
 button
   +box-shadow(none)

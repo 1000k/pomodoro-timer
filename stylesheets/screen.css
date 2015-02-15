@@ -71,17 +71,34 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
  * google-material-color v1.1.0
  * https://github.com/danlevan/google-material-color
  */
-/* line 20, ../sass/screen.sass */
+/* line 21, ../sass/screen.sass */
 body {
   background-color: #3D5AFE;
   color: white;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 300;
   font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
-  line-height: 3rem;
+  line-height: 4rem;
 }
 
-/* line 28, ../sass/screen.sass */
+/* line 29, ../sass/screen.sass */
+.container {
+  position: absolute;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+/* line 34, ../sass/screen.sass */
+.indicators {
+  text-align: center;
+  margin: 4rem 0;
+  line-height: 8rem;
+}
+
+/* line 39, ../sass/screen.sass */
 button {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -111,19 +128,19 @@ button {
   position: relative;
   top: 0px;
 }
-/* line 48, ../sass/screen.sass */
+/* line 59, ../sass/screen.sass */
 button:hover, button:focus, button:active, button.is-active, button.active {
   text-decoration: none;
   outline: none;
 }
-/* line 52, ../sass/screen.sass */
+/* line 63, ../sass/screen.sass */
 button:hover, button:focus {
   background-color: #3949AB;
   -moz-box-shadow: 0px 16px #283593;
   -webkit-box-shadow: 0px 16px #283593;
   box-shadow: 0px 16px #283593;
 }
-/* line 55, ../sass/screen.sass */
+/* line 66, ../sass/screen.sass */
 button:active, button.is-active, button.active {
   background-color: #3F51B5;
   background-color: #303F9F;
