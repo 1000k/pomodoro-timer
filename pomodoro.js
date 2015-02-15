@@ -29,8 +29,8 @@ angular.module('pomodoroTimer', [])
       var updateTimerDisplay = function(ms) {
         var min = Math.floor(ms / 1000 / 60),
           sec = Math.floor(ms / 1000 % 60),
-          ms = ms.toString().slice(-3),
-          timerDisplay = min + ':' + sec + ':' + ms;
+          ms = ms.toString().slice(-3);
+          timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2) + ':' + ms;
 
         $scope.pomodoro_timer_display = timerDisplay;
         return timerDisplay;
