@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Example - example-example108-production</title>
+  <title>Pomodoro Timer</title>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.1/angular.min.js"></script>
   <script src="pomodoro.js"></script>
 </head>
 <body data-ng-app="pomodoroTimer">
-    <div data-ng-controller="PomodoroController">
   <ng-view>
+    <div data-ng-controller="PomodoroController">
       <div>{{current_cycle}}</div>
 
       <time>{{pomodoro_timer_display}}</time>
@@ -16,7 +16,7 @@
       <button type="button" data-ng-click="runPomodoro()">Run</button>
       <button type="button" data-ng-click="stopPomodoro()">Stop</button>
       <button type="button" data-ng-click="resetPomodoro()">Reset</button>
-  </ng-view>
     </div>
+  </ng-view>
 </body>
 </html>
