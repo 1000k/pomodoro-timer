@@ -26,11 +26,12 @@ body
   line-height: $pt-mode-font-size
 
 button
-  @include box-shadow(none)
-  @include transition-duration(background)
-  @include transition-duration(.3s)
+  +box-shadow(none)
+  +transition-duration(background)
+  +transition-duration(.2s)
+  +single-box-shadow(null, null, 16px, null, palette($pt-default-primary-color, 900))
 
-  background-color: palette($pt-default-primary-color, 800)
+  background-color: palette($pt-default-primary-color, 700)
   color: $pt-btn-font-color
   border: none
   text-shadow: none
@@ -41,12 +42,18 @@ button
   font-size: $pt-btn-font-size
   font-weight: $pt-default-font-weight
   font-family: $pt-default-font-family
+  position: relative
+  top: 0px
 
   &:hover, &:focus, &:active, &.is-active, &.active
     text-decoration: none
     outline: none
 
   &:hover, &:focus
-    background-color: palette($pt-default-primary-color, 200)
-  // &:active, &.is-active, &.active
-  //   background-color: palette($pt-default-primary-color)
+    background-color: palette($pt-default-primary-color, 600)
+    +single-box-shadow(null, null, 16px, null, palette($pt-default-primary-color, 800))
+  &:active, &.is-active, &.active
+    background-color: palette($pt-default-primary-color)
+    background-color: palette($pt-default-primary-color, 700)
+    +single-box-shadow(null, null, 8px, null, palette($pt-default-primary-color, 900))
+    top: 8px

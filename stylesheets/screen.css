@@ -90,11 +90,14 @@ button {
   -o-transition-duration: background;
   -webkit-transition-duration: background;
   transition-duration: background;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  background-color: #283593;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -moz-box-shadow: 0px 16px #1A237E;
+  -webkit-box-shadow: 0px 16px #1A237E;
+  box-shadow: 0px 16px #1A237E;
+  background-color: #303F9F;
   color: white;
   border: none;
   text-shadow: none;
@@ -105,13 +108,27 @@ button {
   font-size: 1.5rem;
   font-weight: 300;
   font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
+  position: relative;
+  top: 0px;
 }
-/* line 45, ../sass/screen.sass */
+/* line 48, ../sass/screen.sass */
 button:hover, button:focus, button:active, button.is-active, button.active {
   text-decoration: none;
   outline: none;
 }
-/* line 49, ../sass/screen.sass */
+/* line 52, ../sass/screen.sass */
 button:hover, button:focus {
-  background-color: #9FA8DA;
+  background-color: #3949AB;
+  -moz-box-shadow: 0px 16px #283593;
+  -webkit-box-shadow: 0px 16px #283593;
+  box-shadow: 0px 16px #283593;
+}
+/* line 55, ../sass/screen.sass */
+button:active, button.is-active, button.active {
+  background-color: #3F51B5;
+  background-color: #303F9F;
+  -moz-box-shadow: 0px 8px #1A237E;
+  -webkit-box-shadow: 0px 8px #1A237E;
+  box-shadow: 0px 8px #1A237E;
+  top: 8px;
 }
