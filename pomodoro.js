@@ -1,6 +1,6 @@
 angular.module('pomodoroTimer', [])
-  .controller('PomodoroController', ['$scope', '$interval', 'dateFilter',
-    function($scope, $interval, dateFilter) {
+  .controller('PomodoroController', ['$scope', '$interval',
+    function($scope, $interval) {
       var TIME_WORK_MS = 1500000, // 25 min (milliseconds)
         TIME_BREAK_MS = 300000, // 5 min (milliseconds)
         CYCLE_WORK = 'work',
@@ -11,7 +11,7 @@ angular.module('pomodoroTimer', [])
       // HTML5 Notification
       var Notification = window.Notification || window.mozNotification || window.webkitNotification;
 
-      Notification.requestPermission(function (permission) {
+      Notification.requestPermission(function(permission) {
         // do something
       });
 
@@ -30,7 +30,7 @@ angular.module('pomodoroTimer', [])
         var min = Math.floor(ms / 1000 / 60),
           sec = Math.floor(ms / 1000 % 60),
           ms = ms.toString().slice(-3);
-          timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2) + ':' + ms;
+        timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2) + ':' + ms;
 
         $scope.pomodoro_timer_display = timerDisplay;
         return timerDisplay;
@@ -90,7 +90,7 @@ angular.module('pomodoroTimer', [])
         $scope.stopPomodoro();
       });
 
-     $scope.$watch('$viewContentLoaded', function() {
+      $scope.$watch('$viewContentLoaded', function() {
         init();
-     });
+      });
     }]);
