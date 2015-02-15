@@ -30,7 +30,7 @@ angular.module('pomodoroTimer', [])
         var min = Math.floor(ms / 1000 / 60),
           sec = Math.floor(ms / 1000 % 60),
           ms = ms.toString().slice(-3);
-        timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2) + ':' + ms;
+        timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2) + '.' + ms;
 
         $scope.pomodoro_timer_display = timerDisplay;
         return timerDisplay;
