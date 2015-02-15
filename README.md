@@ -10,6 +10,9 @@ Just put files under your server's document root.
 
 Release History
 ---------------
+### v0.2.2 (2015-02-15)
+- Renamed `pomodoro.html` as `index.html`
+
 ### v0.2.1 (2015-02-15)
 - Added auto close feature of notification
 
