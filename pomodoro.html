@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-ng-app="pomodoroTimer">
 <head>
   <meta charset="UTF-8">
   <title>Pomodoro Timer</title>
@@ -8,20 +8,18 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.4/angular-animate.min.js"></script>
   <script src="pomodoro.js"></script>
 </head>
-<body data-ng-app="pomodoroTimer">
-  <ng-view>
-    <div data-ng-controller="PomodoroController" class="container">
-      <div class="indicators">
-        <div class="current_cycle">{{current_cycle}}</div>
-        <time clasS="current_time">{{pomodoro_timer_display}}</time>
-      </div>
-
-      <div>
-        <button type="button" data-ng-click="runPomodoro()">Run</button>
-        <button type="button" data-ng-click="stopPomodoro()">Stop</button>
-        <button type="button" data-ng-click="resetPomodoro()">Reset</button>
-      </div>
+<body data-ng-controller="PomodoroController" ng-class="cycleColor">
+  <div class="container">
+    <div class="indicators">
+      <div class="current_cycle">{{current_cycle}}</div>
+      <time clasS="current_time">{{pomodoro_timer_display}}</time>
     </div>
-  </ng-view>
+
+    <div>
+      <button type="button" data-ng-click="runPomodoro()">Run</button>
+      <button type="button" data-ng-click="stopPomodoro()">Stop</button>
+      <button type="button" data-ng-click="resetPomodoro()">Reset</button>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 angular.module('pomodoroTimer', [])
-  .controller('PomodoroController', ['$scope', '$interval',
-    function($scope, $interval) {
+  .controller('PomodoroController', ['$scope', '$rootScope', '$interval',
+    function($scope, $rootScope, $interval) {
       var TIME_WORK_MS = 1500000, // 25 min (milliseconds)
         TIME_BREAK_MS = 300000, // 5 min (milliseconds)
         CYCLE_WORK = 'work',
@@ -61,6 +61,7 @@ angular.module('pomodoroTimer', [])
       };
 
       $scope.runPomodoro = function() {
+        $rootScope.cycleColor = 'cycle-' + $scope.current_cycle;
 
         if (angular.isDefined(stopPromise)) return;
 
@@ -78,6 +79,7 @@ angular.module('pomodoroTimer', [])
         if (angular.isDefined(stopPromise)) {
           $interval.cancel(stopPromise);
           stopPromise = undefined;
+          $rootScope.cycleColor = 'cycle-stop';
         }
       };
 

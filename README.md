@@ -20,7 +20,7 @@ Release History
 Ackknowledgement
 ----------------
 - [danlevan/google-material-color](https://github.com/danlevan/google-material-color): Google Material Design color palette for SASS
-- [Codrops | Useful resources and inspiration for creative minds](http://tympanus.net/codrops/): UI/UX design inspirations
+
 
 License
 -------

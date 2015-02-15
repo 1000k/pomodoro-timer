@@ -1,30 +1,38 @@
-/*
-  Welcome to Compass.
-  In this file you should write your main styles. (or centralize your imports)
-  Import this file using the following HTML or equivalent:
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-
 @import compass/reset
 @import compass/css3
 @import compass/css3/transform
 @import palette
 
-$pt-default-primary-color: Indigo
+$pt-default-primary-color: Blue Grey
 $pt-default-font-weight: 300
 $pt-default-font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif
 
-$pt-mode-font-size: 4rem
+$pt-cycle-font-size: 4rem
+$pt-cycle-work-background-color: Deep Orange
+$pt-cycle-break-background-color: Green
 
 $pt-btn-font-size: 1.5rem
 $pt-btn-font-color: white
 
+
 body
-  background-color: palette($pt-default-primary-color, A400)
+  +transition-duration(background)
+  +transition-duration(.5s)
+  background-color: palette($pt-default-primary-color)
   color: $pt-btn-font-color
-  font-size: $pt-mode-font-size
+  font-size: $pt-cycle-font-size
   font-weight: $pt-default-font-weight
   font-family: $pt-default-font-family
-  line-height: $pt-mode-font-size
+  line-height: $pt-cycle-font-size
+
+.cycle-stop
+  background-color: palette($pt-default-primary-color)
+
+.cycle-work
+  background-color: palette($pt-cycle-work-background-color)
+
+.cycle-break
+  background-color: palette($pt-cycle-break-background-color)
 
 .container
   position: absolute
@@ -33,8 +41,8 @@ body
 
 .indicators
   text-align: center
-  margin: $pt-mode-font-size 0
-  line-height: $pt-mode-font-size * 2
+  margin: $pt-cycle-font-size 0
+  line-height: $pt-cycle-font-size * 2
 
 button
   +box-shadow(none)
