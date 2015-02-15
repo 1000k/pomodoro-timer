@@ -66,3 +66,18 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
+
+/**
+ * google-material-color v1.1.0
+ * https://github.com/danlevan/google-material-color
+ */
+/* line 10, ../sass/screen.sass */
+body {
+  background-color: #03A9F4;
+  color: white;
+}
+
+/* line 14, ../sass/screen.sass */
+button {
+  background-color: #4FC3F7;
+}
