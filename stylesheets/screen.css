@@ -67,7 +67,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
  * google-material-color v1.1.0
  * https://github.com/danlevan/google-material-color
  */
-/* line 18, ../sass/screen.sass */
+/* line 17, ../sass/screen.sass */
 body {
   -moz-transition-duration: background;
   -o-transition-duration: background;
@@ -85,22 +85,22 @@ body {
   line-height: 4rem;
 }
 
-/* line 28, ../sass/screen.sass */
+/* line 27, ../sass/screen.sass */
 .cycle-stop {
   background-color: #607D8B;
 }
 
-/* line 31, ../sass/screen.sass */
+/* line 30, ../sass/screen.sass */
 .cycle-work {
   background-color: #FF5722;
 }
 
-/* line 34, ../sass/screen.sass */
+/* line 33, ../sass/screen.sass */
 .cycle-break {
   background-color: #4CAF50;
 }
 
-/* line 37, ../sass/screen.sass */
+/* line 36, ../sass/screen.sass */
 .container {
   position: absolute;
   -moz-transform: translateX(-50%);
@@ -110,14 +110,14 @@ body {
   left: 50%;
 }
 
-/* line 42, ../sass/screen.sass */
+/* line 41, ../sass/screen.sass */
 .indicators {
   text-align: center;
   margin: 4rem 0;
   line-height: 8rem;
 }
 
-/* line 47, ../sass/screen.sass */
+/* line 46, ../sass/screen.sass */
 button {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -147,19 +147,19 @@ button {
   position: relative;
   top: 0px;
 }
-/* line 67, ../sass/screen.sass */
+/* line 66, ../sass/screen.sass */
 button:hover, button:focus, button:active, button.is-active, button.active {
   text-decoration: none;
   outline: none;
 }
-/* line 71, ../sass/screen.sass */
+/* line 70, ../sass/screen.sass */
 button:hover, button:focus {
   background-color: #546E7A;
   -moz-box-shadow: 0px 16px #37474F;
   -webkit-box-shadow: 0px 16px #37474F;
   box-shadow: 0px 16px #37474F;
 }
-/* line 74, ../sass/screen.sass */
+/* line 73, ../sass/screen.sass */
 button:active, button.is-active, button.active {
   background-color: #607D8B;
   background-color: #455A64;
