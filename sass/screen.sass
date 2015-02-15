@@ -8,21 +8,21 @@
 @import compass/css3
 @import palette
 
-$primary-color: Green
+$pt-default-primary-color: Indigo
+$pt-default-font-weight: 300
+$pt-default-font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif
 
 $pt-mode-font-size: 3rem
-$pt-mode-font-weight: 300
-$pt-mode-font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif
 
 $pt-btn-font-size: 1.5rem
 $pt-btn-font-color: white
 
 body
-  background-color: palette($primary-color)
+  background-color: palette($pt-default-primary-color, A400)
   color: $pt-btn-font-color
   font-size: $pt-mode-font-size
-  font-weight: $pt-mode-font-weight
-  font-family: $pt-mode-font-family
+  font-weight: $pt-default-font-weight
+  font-family: $pt-default-font-family
   line-height: $pt-mode-font-size
 
 button
@@ -30,7 +30,7 @@ button
   @include transition-duration(background)
   @include transition-duration(.3s)
 
-  background-color: palette($primary-color, 800)
+  background-color: palette($pt-default-primary-color, 800)
   color: $pt-btn-font-color
   border: none
   text-shadow: none
@@ -39,12 +39,14 @@ button
   text-decoration: none
   text-align: center
   font-size: $pt-btn-font-size
+  font-weight: $pt-default-font-weight
+  font-family: $pt-default-font-family
 
   &:hover, &:focus, &:active, &.is-active, &.active
     text-decoration: none
     outline: none
 
   &:hover, &:focus
-    background: palette($primary-color, 200)
+    background-color: palette($pt-default-primary-color, 200)
   // &:active, &.is-active, &.active
-  //   @include transition-duration(1s)
+  //   background-color: palette($pt-default-primary-color)

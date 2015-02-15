@@ -15,13 +15,16 @@
 <body data-ng-app="pomodoroTimer">
   <ng-view>
     <div data-ng-controller="PomodoroController">
-      <div>{{current_cycle}}</div>
+      <div class="indicators">
+        <div class="current_cycle">{{current_cycle}}</div>
+        <time clasS="current_time">{{pomodoro_timer_display}}</time>
+      </div>
 
-      <time>{{pomodoro_timer_display}}</time>
-
-      <button type="button" data-ng-click="runPomodoro()">Run</button>
-      <button type="button" data-ng-click="stopPomodoro()">Stop</button>
-      <button type="button" data-ng-click="resetPomodoro()">Reset</button>
+      <div>
+        <button type="button" data-ng-click="runPomodoro()">Run</button>
+        <button type="button" data-ng-click="stopPomodoro()">Stop</button>
+        <button type="button" data-ng-click="resetPomodoro()">Reset</button>
+      </div>
     </div>
   </ng-view>
 </body>
