@@ -8,6 +8,11 @@ How to run
 Just put files under your server's document root.
 
 
+Demo
+----
+[http://1000k.github.io/pomodoro-timer/](http://1000k.github.io/pomodoro-timer/)
+
+
 Browsers Support
 ----------------
 - Chrome >= 40
