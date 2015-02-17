@@ -5,7 +5,7 @@ angular.module('pomodoroTimer', [])
         TIME_BREAK_MS = 300000, // 5 min (milliseconds)
         CYCLE_WORK = 'work',
         CYCLE_BREAK = 'break',
-        COUNTDOWN_RESOLUTION_MS = 20,
+        COUNTDOWN_RESOLUTION_MS = 1000, // *NOTE* If less than 1000ms, countdown will stop when the tab is out-focused.
         NOTIFICATION_AUTO_CLOSE_DURATION_MS = 10000,
         stopPromise;
 
@@ -36,8 +36,7 @@ angular.module('pomodoroTimer', [])
       var updateTimerDisplay = function(ms) {
         var min = Math.floor(ms / 1000 / 60),
           sec = Math.floor(ms / 1000 % 60),
-          ms = ms.toString().slice(-3);
-        timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2) + '.' + ('000' + ms).substr(-3);
+          timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2);
 
         $scope.pomodoro_timer_display = timerDisplay;
         return timerDisplay;
