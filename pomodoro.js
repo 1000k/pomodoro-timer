@@ -93,6 +93,7 @@ angular.module('pomodoroTimer', [])
       };
 
       $scope.resetPomodoro = function() {
+        $scope.stopPomodoro();
         init();
       };
 
