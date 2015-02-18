@@ -84,7 +84,7 @@ angular.module('pomodoroTimer', [])
         }, COUNTDOWN_RESOLUTION_MS);
       };
 
-      $scope.stopPomodoro = function() {
+      $scope.pausePomodoro = function() {
         if (angular.isDefined(stopPromise)) {
           $interval.cancel(stopPromise);
           stopPromise = undefined;
@@ -93,13 +93,13 @@ angular.module('pomodoroTimer', [])
       };
 
       $scope.resetPomodoro = function() {
-        $scope.stopPomodoro();
+        $scope.pausePomodoro();
         init();
       };
 
       $scope.$on('$destroy', function() {
         // Make sure that the interval is destroyed too
-        $scope.stopPomodoro();
+        $scope.pausePomodoro();
       });
 
       $scope.$watch('$viewContentLoaded', function() {
