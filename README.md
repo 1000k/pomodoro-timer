@@ -21,6 +21,10 @@ Browsers Support
 
 Release History
 ---------------
+### v0.2.5 (2015-02-18)
+- Implemented SVG icon button
+- Changed reset button's function (stop & reset)
+
 ### v0.2.4 (2015-02-18)
 - Improved <title> tag to show current cycle and the remaining time
 - Changed the popup messages
@@ -45,6 +49,7 @@ Release History
 Acknowledgement
 ---------------
 - [danlevan/google-material-color](https://github.com/danlevan/google-material-color): Google Material Design color palette for SASS
+- [Icon Font & SVG Icon Sets ❍ IcoMoon](https://icomoon.io/)
 
 
 License
