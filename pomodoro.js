@@ -50,19 +50,21 @@ angular.module('pomodoroTimer', [])
         switch ($scope.current_cycle) {
           case CYCLE_WORK:
             $scope.pomodoro_timer = TIME_WORK_MS;
+            showNotification('Get back to work.');
             break;
           case CYCLE_BREAK:
           default:
             $scope.pomodoro_timer = TIME_BREAK_MS;
+            showNotification('Have a break.');
             break;
         }
 
-        showNotification('Next cycle: ' + $scope.current_cycle);
         $scope.runPomodoro();
       }
 
       var init = function() {
         $scope.current_cycle = 'work';
+        $scope.cycleColor = 'cycle-' + $scope.current_cycle;
         $scope.pomodoro_timer = TIME_WORK_MS;
         $scope.pomodoro_timer_display = updateTimerDisplay($scope.pomodoro_timer);
       };
