@@ -64,7 +64,7 @@ angular.module('pomodoroTimer', [])
 
       var init = function() {
         $scope.current_cycle = 'work';
-        $scope.cycleColor = 'cycle-' + $scope.current_cycle;
+        $scope.cycleColor = 'cycle-stop';
         $scope.pomodoro_timer = TIME_WORK_MS;
         $scope.pomodoro_timer_display = updateTimerDisplay($scope.pomodoro_timer);
       };
