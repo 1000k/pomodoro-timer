@@ -19,31 +19,9 @@ Browsers Support
 - Firefox >= 30
 
 
-Release History
+Changelog
 ---------------
-### v0.2.5 (2015-02-18)
-- Implemented SVG icon button
-- Changed reset button's function (stop & reset)
-
-### v0.2.4 (2015-02-18)
-- Improved <title> tag to show current cycle and the remaining time
-- Changed the popup messages
-- Fixed the bug the background color didn't changed on clicking 'reset' button on 'break' cycle
-
-### v0.2.3 (2015-02-17)
-- Fixed countdown interval to 1000ms so as to work unless in the inactive tab (see: [javascript - setTimeout/setInterval 1000ms lag in background tabs (Chrome and Firefox) - Stack Overflow](http://stackoverflow.com/questions/19475894/settimeout-setinterval-1000ms-lag-in-background-tabs-chrome-and-firefox))
-
-### v0.2.2 (2015-02-15)
-- Renamed `pomodoro.html` as `index.html`
-
-### v0.2.1 (2015-02-15)
-- Added auto close feature of notification
-
-### v0.2.0 (2015-02-15)
-- Added stylesheets
-
-### v0.1.0 (2015-02-14)
-- Initial release
+See [CHANGELOG.md][./CHANGELOG.md]
 
 
 Acknowledgement
