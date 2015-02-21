@@ -3,6 +3,7 @@
 ## v1.0.0 (February 21, 2015)
 
 - Added brower supports in addition to Chrome and Firefox (desktop notification works only if supported)
+- Changed file structure
 
 ## v0.2.5 (February 18, 2015)
 
