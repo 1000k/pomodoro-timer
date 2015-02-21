@@ -7,10 +7,7 @@
 </head>
 <body data-ng-controller="PomodoroController" ng-class="cycleColor">
   <div class="container">
-    <div class="indicators">
-      <div class="current_cycle">{{current_cycle}}</div>
-      <time class="current_time">{{pomodoro_timer_display}}</time>
-    </div>
+    <pt-indicator></pt-indicator>
 
     <div>
       <button type="button" class="btn btn-run" data-ng-click="runPomodoro()">Run</button>

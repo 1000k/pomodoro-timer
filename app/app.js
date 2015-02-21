@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('pomodoroTimer', [])
+
   .controller('PomodoroController', ['$scope', '$rootScope', '$interval',
     function($scope, $rootScope, $interval) {
       var TIME_WORK_MS = 1500000, // 25 min (milliseconds)
@@ -110,4 +111,13 @@ angular.module('pomodoroTimer', [])
       $scope.$watch('$viewContentLoaded', function() {
         init();
       });
-    }]);
+    }])
+
+  .directive('ptIndicator', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/indicator.tpl.html'
+    }
+  })
+;
+
