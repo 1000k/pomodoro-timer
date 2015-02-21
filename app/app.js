@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('pomodoroTimer', [])
   .controller('PomodoroController', ['$scope', '$rootScope', '$interval',
     function($scope, $rootScope, $interval) {

@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title data-ng-bind="title">Pomodoro Timer</title>
-  <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.4/angular.min.js"></script>
-  <script src="pomodoro.js"></script>
+  <link href="assets/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 </head>
 <body data-ng-controller="PomodoroController" ng-class="cycleColor">
   <div class="container">
@@ -20,5 +18,8 @@
       <button type="button" class="btn btn-reset" data-ng-click="resetPomodoro()">Reset</button>
     </div>
   </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.4/angular.min.js"></script>
+  <script src="app/app.js"></script>
 </body>
 </html>
