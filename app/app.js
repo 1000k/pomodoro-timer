@@ -10,7 +10,9 @@ angular.module('pomodoroTimer', [])
         CYCLE_BREAK = 'break',
         COUNTDOWN_RESOLUTION_MS = 1000, // *NOTE* If less than 1000ms, countdown will stop when the tab is out-focused.
         NOTIFICATION_AUTO_CLOSE_DURATION_MS = 15000,
-        stopPromise;
+        stopPromise,
+        remaingTimeMs,
+        currentCycle;
 
       var Notification = window.Notification || window.mozNotification || window.webkitNotification;
 
@@ -39,28 +41,33 @@ angular.module('pomodoroTimer', [])
         return false;
       }
 
-      var updateTimerDisplay = function(ms) {
+      var updateBackground = function(cycle) {
+        $scope.cycleColor = 'cycle-' + cycle;
+      }
+
+      var updateTimerDisplay = function(ms, cycle) {
         var min = Math.floor(ms / 1000 / 60),
           sec = Math.floor(ms / 1000 % 60),
           timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2);
 
-        $scope.pomodoro_timer_display = timerDisplay;
-        $rootScope.title = $scope.current_cycle + ' ' + timerDisplay;
+        $scope.indicator = {cycle: cycle, time: timerDisplay};
+        $rootScope.title = cycle + ' ' + timerDisplay;
+
         return timerDisplay;
       };
 
       var toggleCycle = function() {
-        $scope.current_cycle = ($scope.current_cycle === CYCLE_WORK) ?
+        currentCycle = (currentCycle === CYCLE_WORK) ?
           CYCLE_BREAK : CYCLE_WORK;
 
-        switch ($scope.current_cycle) {
+        switch (currentCycle) {
           case CYCLE_WORK:
-            $scope.pomodoro_timer = TIME_WORK_MS;
+            remaingTimeMs = TIME_WORK_MS;
             showNotification('Get back to work.');
             break;
           case CYCLE_BREAK:
           default:
-            $scope.pomodoro_timer = TIME_BREAK_MS;
+            remaingTimeMs = TIME_BREAK_MS;
             showNotification('Have a break.');
             break;
         }
@@ -69,21 +76,22 @@ angular.module('pomodoroTimer', [])
       }
 
       var init = function() {
-        $scope.current_cycle = 'work';
-        $scope.cycleColor = 'cycle-stop';
-        $scope.pomodoro_timer = TIME_WORK_MS;
-        $scope.pomodoro_timer_display = updateTimerDisplay($scope.pomodoro_timer);
+        currentCycle = 'work';
+        updateBackground('stop');
+        remaingTimeMs = TIME_WORK_MS;
+        updateTimerDisplay(remaingTimeMs, currentCycle);
       };
 
       $scope.runPomodoro = function() {
-        $scope.cycleColor = 'cycle-' + $scope.current_cycle;
+        updateBackground(currentCycle);
+
 
         if (angular.isDefined(stopPromise)) return;
 
         stopPromise = $interval(function() {
-          if ($scope.pomodoro_timer > 0) {
-            $scope.pomodoro_timer = $scope.pomodoro_timer - COUNTDOWN_RESOLUTION_MS;
-            updateTimerDisplay($scope.pomodoro_timer);
+          if (remaingTimeMs > 0) {
+            remaingTimeMs = remaingTimeMs - COUNTDOWN_RESOLUTION_MS;
+            updateTimerDisplay(remaingTimeMs, currentCycle);
           } else {
             toggleCycle();
           }
@@ -94,7 +102,7 @@ angular.module('pomodoroTimer', [])
         if (angular.isDefined(stopPromise)) {
           $interval.cancel(stopPromise);
           stopPromise = undefined;
-          $scope.cycleColor = 'cycle-stop';
+          updateBackground('stop');
         }
       };
 
@@ -116,6 +124,9 @@ angular.module('pomodoroTimer', [])
   .directive('ptIndicator', function() {
     return {
       restrict: 'E',
+      scope: {
+        indicator: '='
+      },
       templateUrl: 'app/indicator.tpl.html'
     }
   })
