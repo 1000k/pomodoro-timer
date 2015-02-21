@@ -1,5 +1,9 @@
 # ChangeLog
 
+## v1.0.0 (February 21, 2015)
+
+- Added brower supports in addition to Chrome and Firefox (desktop notification works only if supported)
+
 ## v0.2.5 (February 18, 2015)
 
 - Implemented SVG icon button
