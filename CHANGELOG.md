@@ -1,5 +1,9 @@
 # ChangeLog
 
+## v1.1.0 (February 22, 2015)
+
+- Implemented audio alarm
+
 ## v1.0.0 (February 21, 2015)
 
 - Added brower supports in addition to Chrome and Firefox (desktop notification works only if supported)

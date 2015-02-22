@@ -4,10 +4,8 @@ angular.module('pomodoroTimer', [])
 
   .controller('PomodoroController', ['$scope', '$rootScope', '$interval',
     function($scope, $rootScope, $interval) {
-      // var TIME_WORK_MS = 1500000, // 25 min (milliseconds)
-      //   TIME_BREAK_MS = 300000, // 5 min (milliseconds)
-      var TIME_WORK_MS = 10000, // 25 min (milliseconds)
-        TIME_BREAK_MS = 10000, // 5 min (milliseconds)
+      var TIME_WORK_MS = 1500000, // 25 min (milliseconds)
+        TIME_BREAK_MS = 300000, // 5 min (milliseconds)
         CYCLE_WORK = 'work',
         CYCLE_BREAK = 'break',
         COUNTDOWN_RESOLUTION_MS = 1000, // *NOTE* If less than 1000ms, countdown will stop when the tab is out-focused.
@@ -49,6 +47,10 @@ angular.module('pomodoroTimer', [])
         return false;
       }
 
+      var playAudio = function(audioType) {
+        new Audio(audioType).play();
+      }
+
       var updateBackground = function(cycle) {
         $scope.cycleColor = 'cycle-' + cycle;
       }
@@ -72,31 +74,35 @@ angular.module('pomodoroTimer', [])
           case CYCLE_WORK:
             remaingTimeMs = TIME_WORK_MS;
             showNotification('Get back to work.');
-            new Audio(AUDIOS.WORK).play();
+            // new Audio(AUDIOS.WORK).play();
+            playAudio(AUDIOS.WORK);
             break;
           case CYCLE_BREAK:
           default:
             remaingTimeMs = TIME_BREAK_MS;
             showNotification('Have a break.');
-            new Audio(AUDIOS.BREAK).play();
+            // new Audio(AUDIOS.BREAK).play();
+            playAudio(AUDIOS.BREAK);
             break;
         }
 
         updateBackground(currentCycle);
-        $scope.runPomodoro();
+        updateTimerDisplay(remaingTimeMs, currentCycle);
       }
 
       var init = function() {
-        currentCycle = 'work';
+        currentCycle = CYCLE_WORK;
         updateBackground('stop');
         remaingTimeMs = TIME_WORK_MS;
         updateTimerDisplay(remaingTimeMs, currentCycle);
       };
 
       $scope.runPomodoro = function() {
+        updateBackground(currentCycle);
+
         if (angular.isDefined(stopPromise)) return;
 
-        new Audio(AUDIOS.START).play();
+        playAudio(AUDIOS.START);
 
         stopPromise = $interval(function() {
           if (remaingTimeMs > 0) {
@@ -112,7 +118,7 @@ angular.module('pomodoroTimer', [])
         if (angular.isDefined(stopPromise)) {
           $interval.cancel(stopPromise);
           stopPromise = undefined;
-          new Audio(AUDIOS.PAUSE).play();
+          playAudio(AUDIOS.PAUSE);
           updateBackground('stop');
         }
       };
