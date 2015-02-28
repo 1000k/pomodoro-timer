@@ -33,6 +33,7 @@ angular.module 'pomodoroTimer', []
         # do nothing
 
     showNotification = (msg) ->
+      # Show HTML5 Desktop Notification if supported by the browser
       if Notification and Notification.permission == 'granted'
         instance = new Notification(
           "Time Expired", {
