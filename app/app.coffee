@@ -1,8 +1,18 @@
+'use strict'
+
+###*
+ # @ngdoc overview
+ # @name pomodoroTimer
+ # @description
+ # # pomodoroTimer
+ #
+ # Main module of the application.
+###
 angular.module 'pomodoroTimer', []
 
   .controller 'PomodoroController', ['$scope', '$rootScope', '$interval', ($scope, $rootScope, $interval) ->
-    TIME_WORK_MS = 1500000 # 25 min (milliseconds)
-    TIME_BREAK_MS = 300000 # 5 min (milliseconds)
+    TIME_WORK_MS = 1500000  # 25 min (milliseconds)
+    TIME_BREAK_MS = 300000  # 5 min (milliseconds)
     CYCLE_WORK = 'work'
     CYCLE_BREAK = 'break'
     COUNTDOWN_RESOLUTION_MS = 1000 # *NOTE* If less than 1000ms, countdown will stop when the tab is out-focused.
@@ -12,7 +22,6 @@ angular.module 'pomodoroTimer', []
       PAUSE: 'assets/audio/pause.m4a'
       WORK: 'assets/audio/work.m4a'
       BREAK: 'assets/audio/break.m4a'
-
     stopPromise = undefined
     remaingTimeMs = undefined
     currentCycle = undefined
@@ -44,7 +53,7 @@ angular.module 'pomodoroTimer', []
       new Audio(audioType).play()
 
     updateBackground = (cycle) ->
-      $scope.cycleColor = 'cycle-' + cycle
+      $scope.cycleColor = "cycle-#{cycle}"
 
     updateTimerDisplay = (ms, cycle) ->
       min = Math.floor(ms / 1000 / 60)
@@ -52,27 +61,25 @@ angular.module 'pomodoroTimer', []
       timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2)
 
       $scope.indicator = {cycle: cycle, time: timerDisplay}
-      $rootScope.title = cycle + ' ' + timerDisplay
+      $rootScope.title = "#{cycle} #{timerDisplay}"
 
       return timerDisplay
 
     toggleCycle = ->
-      currentCycle = (currentCycle == CYCLE_WORK) ?
-        CYCLE_BREAK : CYCLE_WORK
+      currentCycle = if (currentCycle == CYCLE_WORK) then CYCLE_BREAK else CYCLE_WORK
 
       switch currentCycle
         when CYCLE_WORK
           remaingTimeMs = TIME_WORK_MS
           showNotification 'Get back to work.'
           playAudio AUDIOS.WORK
-        when CYCLE_BREAK
         else
           remaingTimeMs = TIME_BREAK_MS
           showNotification 'Have a break.'
           playAudio AUDIOS.BREAK
 
-      updateBackground(currentCycle)
-      updateTimerDisplay(remaingTimeMs, currentCycle)
+      updateBackground currentCycle
+      updateTimerDisplay remaingTimeMs, currentCycle
 
     init = ->
       currentCycle = CYCLE_WORK
@@ -81,39 +88,37 @@ angular.module 'pomodoroTimer', []
       updateTimerDisplay remaingTimeMs, currentCycle
 
     $scope.runPomodoro = ->
-      updateBackground(currentCycle)
+      updateBackground currentCycle
 
-      if angular.isDefined(stopPromise) then return
+      if angular.isDefined stopPromise then return
 
-      playAudio(AUDIOS.START)
+      playAudio AUDIOS.START
 
-      stopPromise = $interval(->
+      stopPromise = $interval( ->
         if remaingTimeMs > 0
-          remaingTimeMs = remaingTimeMs - COUNTDOWN_RESOLUTION_MS
-          updateTimerDisplay(remaingTimeMs, currentCycle)
+          remaingTimeMs -= COUNTDOWN_RESOLUTION_MS
+          updateTimerDisplay remaingTimeMs, currentCycle
         else
           toggleCycle()
       , COUNTDOWN_RESOLUTION_MS)
 
     $scope.pausePomodoro = ->
-      if angular.isDefined(stopPromise)
-        $interval.cancel(stopPromise)
+      if angular.isDefined stopPromise
+        $interval.cancel stopPromise
         stopPromise = undefined
-        playAudio(AUDIOS.PAUSE)
-        updateBackground('stop')
+        playAudio AUDIOS.PAUSE
+        updateBackground 'stop'
 
     $scope.resetPomodoro = ->
       $scope.pausePomodoro()
       init()
 
-    $scope.$on('$destroy', ->
+    $scope.$on '$destroy', ->
       # Make sure that the interval is destroyed too
       $scope.pausePomodoro()
-    )
 
-    $scope.$watch('$viewContentLoaded', ->
+    $scope.$watch '$viewContentLoaded', ->
       init()
-    )
   ]
 
   .directive 'ptIndicator', ->
