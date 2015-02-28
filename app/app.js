@@ -11,7 +11,7 @@
  */
 angular.module('pomodoroTimer', []).controller('PomodoroController', [
   '$scope', '$rootScope', '$interval', function($scope, $rootScope, $interval) {
-    var AUDIOS, COUNTDOWN_RESOLUTION_MS, CYCLE_BREAK, CYCLE_WORK, NOTIFICATION_AUTO_CLOSE_DURATION_MS, Notification, TIME_BREAK_MS, TIME_WORK_MS, currentCycle, init, playAudio, remaingTimeMs, showNotification, stopPromise, toggleCycle, updateBackground, updateTimerDisplay;
+    var AUDIOS, COUNTDOWN_RESOLUTION_MS, CYCLE_BREAK, CYCLE_WORK, NOTIFICATION_AUTO_CLOSE_DURATION_MS, Notification, TIME_BREAK_MS, TIME_WORK_MS, calcRemaingTime, currentCycle, dtDist, dtStart, init, isRunning, playAudio, remaingTimeMs, setTargetTime, showNotification, stopPromise, toggleCycle, updateBackground, updateTimerDisplay;
     TIME_WORK_MS = 1500000;
     TIME_BREAK_MS = 300000;
     CYCLE_WORK = 'work';
@@ -25,8 +25,10 @@ angular.module('pomodoroTimer', []).controller('PomodoroController', [
       BREAK: 'assets/audio/break.m4a'
     };
     stopPromise = void 0;
-    remaingTimeMs = void 0;
     currentCycle = void 0;
+    dtStart = dtDist = void 0;
+    remaingTimeMs = 0;
+    isRunning = false;
     Notification = window.Notification || window.mozNotification || window.webkitNotification;
     if (Notification && Notification.permission !== 'granted') {
       Notification.requestPermission(function(permission) {});
@@ -56,7 +58,7 @@ angular.module('pomodoroTimer', []).controller('PomodoroController', [
       var min, sec, timerDisplay;
       min = Math.floor(ms / 1000 / 60);
       sec = Math.floor(ms / 1000 % 60);
-      timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2);
+      timerDisplay = ms < 0 ? '00:00' : timerDisplay = ('00' + min).substr(-2) + ':' + ('00' + sec).substr(-2);
       $scope.indicator = {
         cycle: cycle,
         time: timerDisplay
@@ -68,19 +70,28 @@ angular.module('pomodoroTimer', []).controller('PomodoroController', [
       currentCycle = currentCycle === CYCLE_WORK ? CYCLE_BREAK : CYCLE_WORK;
       switch (currentCycle) {
         case CYCLE_WORK:
-          remaingTimeMs = TIME_WORK_MS;
           showNotification('Get back to work.');
           playAudio(AUDIOS.WORK);
+          setTargetTime(TIME_WORK_MS);
           break;
         default:
-          remaingTimeMs = TIME_BREAK_MS;
           showNotification('Have a break.');
           playAudio(AUDIOS.BREAK);
+          setTargetTime(TIME_BREAK_MS);
       }
+      remaingTimeMs = calcRemaingTime();
       updateBackground(currentCycle);
       return updateTimerDisplay(remaingTimeMs, currentCycle);
     };
+    setTargetTime = function(intervalMs) {
+      dtStart = new Date();
+      return dtDist = new Date(dtStart.getTime() + intervalMs);
+    };
+    calcRemaingTime = function() {
+      return dtDist.getTime() - Date.now();
+    };
     init = function() {
+      isRunning = false;
       currentCycle = CYCLE_WORK;
       updateBackground('stop');
       remaingTimeMs = TIME_WORK_MS;
@@ -91,10 +102,14 @@ angular.module('pomodoroTimer', []).controller('PomodoroController', [
       if (angular.isDefined(stopPromise)) {
         return;
       }
+      if (!isRunning) {
+        setTargetTime(TIME_WORK_MS);
+        isRunning = true;
+      }
       playAudio(AUDIOS.START);
       return stopPromise = $interval(function() {
         if (remaingTimeMs > 0) {
-          remaingTimeMs -= COUNTDOWN_RESOLUTION_MS;
+          remaingTimeMs = calcRemaingTime();
           return updateTimerDisplay(remaingTimeMs, currentCycle);
         } else {
           return toggleCycle();
