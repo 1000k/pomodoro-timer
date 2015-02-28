@@ -2,6 +2,7 @@
 
 ## v1.1.1 (February 28, 2015)
 
+- Improve countdown accuracy when the timer is running in background tab
 - Added coffee script
 
 ## v1.1.0 (February 22, 2015)
