@@ -1,5 +1,9 @@
 # ChangeLog
 
+## v1.1.1 (February 28, 2015)
+
+- Added coffee script
+
 ## v1.1.0 (February 22, 2015)
 
 - Implemented audio alarm
