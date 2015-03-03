@@ -1,5 +1,10 @@
 # ChangeLog
 
+## v1.1.2 (March 4, 2015)
+
+- Bug fix: ticks two seconds when start the timer
+- Bug fix: the timer icon on desktop notification doesn't show
+
 ## v1.1.1 (February 28, 2015)
 
 - Improve countdown accuracy when the timer is running in background tab
@@ -23,7 +28,7 @@
 
 - Improved <title> tag to show current cycle and the remaining time
 - Changed the popup messages
-- Fixed the bug the background color didn't changed on clicking 'reset' button on 'break' cycle
+- Bug fix: the background color didn't changed on clicking 'reset' button on 'break' cycle
 
 ## v0.2.3 (February 17, 2015)
 
