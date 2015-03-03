@@ -13,8 +13,8 @@
   angular.module('pomodoroTimer', []).controller('PomodoroController', [
     '$scope', '$rootScope', '$interval', function($scope, $rootScope, $interval) {
       var AUDIOS, COUNTDOWN_RESOLUTION_MS, CYCLE_BREAK, CYCLE_WORK, NOTIFICATION_AUTO_CLOSE_DURATION_MS, Notification, TIME_BREAK_MS, TIME_WORK_MS, calcRemaingTime, currentCycle, dtDist, dtStart, init, isRunning, playAudio, remaingTimeMs, setTargetTime, showNotification, stopPromise, tick, toggleCycle, updateBackground, updateTimerDisplay;
-      TIME_WORK_MS = 5000;
-      TIME_BREAK_MS = 5000;
+      TIME_WORK_MS = 1500000;
+      TIME_BREAK_MS = 300000;
       CYCLE_WORK = 'work';
       CYCLE_BREAK = 'break';
       COUNTDOWN_RESOLUTION_MS = 100;

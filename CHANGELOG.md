@@ -4,6 +4,7 @@
 
 - Bug fix: ticks two seconds when start the timer
 - Bug fix: the timer icon on desktop notification doesn't show
+- Bug fix: the latency between the event and the sound
 
 ## v1.1.1 (February 28, 2015)
 

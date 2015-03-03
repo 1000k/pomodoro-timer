@@ -11,10 +11,8 @@
 angular.module 'pomodoroTimer', []
 
   .controller 'PomodoroController', ['$scope', '$rootScope', '$interval', ($scope, $rootScope, $interval) ->
-    # TIME_WORK_MS = 1500000  # 25 min (milliseconds)
-    # TIME_BREAK_MS = 300000  # 5 min (milliseconds)
-    TIME_WORK_MS = 5000  # 25 min (milliseconds)
-    TIME_BREAK_MS = 5000  # 5 min (milliseconds)
+    TIME_WORK_MS = 1500000  # 25 min (milliseconds)
+    TIME_BREAK_MS = 300000  # 5 min (milliseconds)
     CYCLE_WORK = 'work'
     CYCLE_BREAK = 'break'
     COUNTDOWN_RESOLUTION_MS = 100
