@@ -37,9 +37,9 @@
       showNotification = function(msg) {
         var instance;
         if (Notification && Notification.permission === 'granted') {
-          instance = new Notification("Time Expired", {
+          instance = new Notification('Time Expired', {
             body: msg,
-            icon: "data:image/pngbase64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADe0lEQVRYR61X23XaQBAFm//YFYRUEKggwphvOxUEKgiuwLgC4wqCKwh884iowKQDUkHg34bcu2dGZ7RaCSmJztGRtDuze+fOY0f1WuC6vr4eYvgL7pZMx8fjcbpcLp9C8v6Y6N9gPJK5DfTH0H/2Zet2IIqii0aj8cNs7MtvXl9fO3Ec70JA/kY/BaDb7W7q9frHAitnmBsvFos4hzlaTPZofd61gX5bJxMAQtujrwXqfuEeHQ6HaZ7lvg6ZODs7u8U9xtw7fx5rDVar1YTjCYAc6x9A+Vg37vV6LYDR2LgwrtrgnW6JweBsPp/zuyYuISP3HoiEBcvA0QjtsVCkC11dXfXxfY+7WUBtMgWQW3yMNOgEON2WsAE3uL0zAKD88+3tLaLVsKCJoPxGYwIb7zHmLBUmMlSTETA4wFpbsnF+fk6GXIyFABBhCwpNbo6YiADmOxRItV5r+G8Sigfj9z6EP6kC1tghFjpkUwwiaLrAGWVjgEGzpSA3xxzT0V1kBUCGedHvsyPgxzaj8N7m2nQHDGjCPdMUAF2EKEHVi1qOzZ/hkmHZDDDrkHKCYNDSiB3WadMdFnCqDnAC6OkKRyE3B1JSmrkg54JWfRmS4Riya6Ig8BlDvpMLgNEONzDoHO0ajP8CwA8+rPtZ6c+4AGi3QPteNuwU+bwsA8JqhKeLKaYoAHxQoxIXSK6+yMRaozSP2ioAfNdqQKYYgPUMmK8ctKXyfwGw7sWaDzBwlAJggw+14PJU1FdlQMryb5/h0FmwBzpbfIIkVAUgbuB5wYpZeBac9L8sVioNLXrLcu5ZAIVKAPJiJFQfCgHoccyKhTS5zFtYx9UFFQE4F7DGYA/X7tnTMMa3q4BlgvAUQH++TBBWSsOqAE6moVeIMjW76oa+vPV/sBBRoUoprgLIHu/sMeH/puqnTkOPpsIWvCwAv1UvPIwkv5NghPAEaAdlNwvJecdxJsUz/YBpm1yPRxA4lu9OleZQ1KMheYS/+zK3R3a1TjYkwkKEZ9KS4Z193F2Vlgzy/MfQX7uaDTwLNsOATkrgsG+z3S7/EcnIzGdEGo8bsZgG6JVq8X2mcgFQUNwxwWvS5eoCrJjYzLXleG953bOKrUF736e9FANWSH5MRqZbCsVbMsZUw8fQtl55CoUM+EpSrG5JDja50LZb2nb9NZvqH1UhSpn8AzxCRT9SmYAVAAAAAElFTkSuQmCC"
+            icon: 'assets/img/alarm.png'
           });
           instance.onshow = function() {
             return setTimeout(function() {
