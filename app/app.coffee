@@ -11,17 +11,19 @@
 angular.module 'pomodoroTimer', []
 
   .controller 'PomodoroController', ['$scope', '$rootScope', '$interval', ($scope, $rootScope, $interval) ->
-    TIME_WORK_MS = 1500000  # 25 min (milliseconds)
-    TIME_BREAK_MS = 300000  # 5 min (milliseconds)
+    # TIME_WORK_MS = 1500000  # 25 min (milliseconds)
+    # TIME_BREAK_MS = 300000  # 5 min (milliseconds)
+    TIME_WORK_MS = 5000  # 25 min (milliseconds)
+    TIME_BREAK_MS = 5000  # 5 min (milliseconds)
     CYCLE_WORK = 'work'
     CYCLE_BREAK = 'break'
     COUNTDOWN_RESOLUTION_MS = 100
     NOTIFICATION_AUTO_CLOSE_DURATION_MS = 15000
     AUDIOS = 
-      START: 'assets/audio/start.m4a'
-      PAUSE: 'assets/audio/pause.m4a'
-      WORK: 'assets/audio/work.m4a'
-      BREAK: 'assets/audio/break.m4a'
+      START: new Audio('assets/audio/start.m4a')
+      PAUSE: new Audio('assets/audio/pause.m4a')
+      WORK: new Audio('assets/audio/work.m4a')
+      BREAK: new Audio('assets/audio/break.m4a')
     stopPromise = undefined
     currentCycle = undefined
     dtStart = dtDist = undefined
@@ -53,7 +55,7 @@ angular.module 'pomodoroTimer', []
       return false
 
     playAudio = (audioType) ->
-      new Audio(audioType).play()
+      audioType.play()
 
     updateBackground = (cycle) ->
       $scope.cycleColor = "cycle-#{cycle}"
